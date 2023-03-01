@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class RunQueriesController < ApiBaseController
+  class RunQueriesController < APIBaseController
     wrap_parameters :data
 
     load_and_authorize_resource :query, only: :show, parent: false

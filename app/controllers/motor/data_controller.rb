@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class DataController < ApiBaseController
+  class DataController < APIBaseController
     wrap_parameters :data, except: %i[include fields]
 
     include Motor::WrapIoParams

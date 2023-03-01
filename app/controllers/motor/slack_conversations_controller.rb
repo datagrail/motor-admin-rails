@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class SlackConversationsController < ApiBaseController
+  class SlackConversationsController < APIBaseController
     def index
       authorize!(:create, Motor::Alert)
 

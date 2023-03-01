@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class ApiBaseController < ActionController::API
+  class APIBaseController < ActionController::API
     include Motor::CurrentUserMethod
     include Motor::CurrentAbility
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class AuthTokensController < ApiBaseController
+  class AuthTokensController < APIBaseController
     GENERIC_TOKEN_TTL = 2.hours
 
     skip_authorization_check

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class ActiveStorageAttachmentsController < ApiBaseController
+  class ActiveStorageAttachmentsController < APIBaseController
     include Motor::WrapIoParams
 
     wrap_parameters :data, except: %i[include fields]

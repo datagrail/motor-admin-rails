@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class ApiConfigsController < ApiBaseController
+  class ApiConfigsController < APIBaseController
     wrap_parameters :data, except: %i[include fields]
 
     before_action :find_or_initialize_api_config, only: :create

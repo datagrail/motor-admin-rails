@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class SessionsController < ApiBaseController
+  class SessionsController < APIBaseController
     include ActionController::Cookies
 
     skip_authorization_check

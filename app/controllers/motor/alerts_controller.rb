@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class AlertsController < ApiBaseController
+  class AlertsController < APIBaseController
     wrap_parameters :data, except: %i[include fields]
 
     load_and_authorize_resource :alert, only: %i[index show update destroy]

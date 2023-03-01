@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class TagsController < ApiBaseController
+  class TagsController < APIBaseController
     load_and_authorize_resource :tag
 
     def index

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class ResourceDefaultQueriesController < ApiBaseController
+  class ResourceDefaultQueriesController < APIBaseController
     skip_authorization_check
 
     before_action :authorize_resource

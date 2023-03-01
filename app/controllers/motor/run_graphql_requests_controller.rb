@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class RunGraphqlRequestsController < ApiBaseController
+  class RunGraphqlRequestsController < APIBaseController
     JWT_TTL = 2.hours
 
     wrap_parameters :data

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class SendAlertsController < ApiBaseController
+  class SendAlertsController < APIBaseController
     wrap_parameters :data
 
     before_action :build_alert, only: :create

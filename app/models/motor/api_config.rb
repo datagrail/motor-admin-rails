@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class ApiConfig < ::Motor::ApplicationRecord
+  class APIConfig < ::Motor::ApplicationRecord
     encrypts :credentials if defined?(::Motor::EncryptedConfig)
 
     attribute :preferences, default: -> { ActiveSupport::HashWithIndifferentAccess.new }

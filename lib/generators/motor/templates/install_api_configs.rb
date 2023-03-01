@@ -1,5 +1,5 @@
 class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
-  class MotorApiConfig < ActiveRecord::Base
+  class MotorAPIConfig < ActiveRecord::Base
     self.table_name = 'motor_api_configs'
 
     encrypts :credentials if defined?(::Motor::EncryptedConfig)

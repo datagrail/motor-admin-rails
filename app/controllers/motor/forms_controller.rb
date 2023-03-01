@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class FormsController < ApiBaseController
+  class FormsController < APIBaseController
     wrap_parameters :data, except: %i[include fields]
 
     load_and_authorize_resource :form, only: %i[index show update destroy]

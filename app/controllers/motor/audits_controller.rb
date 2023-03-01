@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class AuditsController < ApiBaseController
+  class AuditsController < APIBaseController
     load_and_authorize_resource :audit
 
     def index

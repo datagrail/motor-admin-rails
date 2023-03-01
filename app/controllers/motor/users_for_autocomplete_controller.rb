@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class UsersForAutocompleteController < ApiBaseController
+  class UsersForAutocompleteController < APIBaseController
     def index
       authorize!(:create, Motor::Note)
 

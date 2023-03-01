@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class RunApiRequestsController < ApiBaseController
+  class RunApiRequestsController < APIBaseController
     JWT_TTL = 2.hours
 
     wrap_parameters :data

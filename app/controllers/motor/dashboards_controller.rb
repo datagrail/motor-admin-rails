@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class DashboardsController < ApiBaseController
+  class DashboardsController < APIBaseController
     wrap_parameters :data, except: %i[include fields]
 
     load_and_authorize_resource :dashboard, only: %i[index show update destroy]

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class NoteTagsController < ApiBaseController
+  class NoteTagsController < APIBaseController
     wrap_parameters :data, except: %i[include fields]
 
     load_and_authorize_resource :note_tag
