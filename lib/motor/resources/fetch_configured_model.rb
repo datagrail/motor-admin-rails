@@ -262,7 +262,9 @@ module Motor
       end
 
       def sti_model?(model)
-        !model.superclass.abstract_class && model.columns_hash[model.inheritance_column.to_s]
+        !model.superclass&.abstract_class && model.columns_hash[model.inheritance_column.to_s]
+      rescue NoMethodError => e
+        false
       end
     end
   end
