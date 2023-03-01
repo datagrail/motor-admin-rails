@@ -8,20 +8,20 @@ module Motor
     include Motor::LoadAndAuthorizeDynamicResource
 
     def index
-      @resources = Motor::ApiQuery.call(@resources, params)
+      @resources = Motor::APIQuery.call(@resources, params)
 
       if params[:format] == 'csv'
         render plain: Motor::ActiveRecordUtils.generate_csv_for_relation(@resources, reset_limit: true)
       else
         render json: {
-          data: Motor::ApiQuery::BuildJson.call(@resources, params, current_ability),
-          meta: Motor::ApiQuery::BuildMeta.call(@resources, params)
+          data: Motor::APIQuery::BuildJson.call(@resources, params, current_ability),
+          meta: Motor::APIQuery::BuildMeta.call(@resources, params)
         }
       end
     end
 
     def show
-      render json: { data: Motor::ApiQuery::BuildJson.call(@resource, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@resource, params, current_ability) }
     end
 
     def create
@@ -39,7 +39,7 @@ module Motor
         @resource.save!
       end
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@resource, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@resource, params, current_ability) }
     rescue ActiveRecord::RecordInvalid
       render json: { errors: @resource.errors }, status: :unprocessable_entity
     end
@@ -47,7 +47,7 @@ module Motor
     def update
       @resource.update!(resource_params)
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@resource, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@resource, params, current_ability) }
     rescue ActiveRecord::RecordInvalid
       render json: { errors: @resource.errors }, status: :unprocessable_entity
     end

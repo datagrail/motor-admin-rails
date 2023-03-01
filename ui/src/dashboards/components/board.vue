@@ -65,7 +65,7 @@
 import api from 'api'
 import QueryResult from 'queries/components/result'
 
-import { loadApiQuery } from 'queries/scripts/api_query'
+import { loadAPIQuery } from 'queries/scripts/api_query'
 
 export default {
   name: 'Board',
@@ -163,7 +163,7 @@ export default {
         let apiRequest
 
         if (this.query.preferences.query_type === 'api') {
-          apiRequest = loadApiQuery(this.query, this.queryVariables).then((result) => {
+          apiRequest = loadAPIQuery(this.query, this.queryVariables).then((result) => {
             this.errors = []
             this.data = result.data || []
             this.columns = result.columns || []

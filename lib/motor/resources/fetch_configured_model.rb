@@ -208,7 +208,7 @@ module Motor
           klass.has_many_attached name.delete_suffix('_attachments').to_sym
         elsif filters.present?
           klass.has_many(name.to_sym, lambda {
-                                        Motor::ApiQuery::Filter.apply_filters(all, filters).distinct
+                                        Motor::APIQuery::Filter.apply_filters(all, filters).distinct
                                       }, **options.symbolize_keys)
         else
           klass.has_many(name.to_sym, **options.symbolize_keys)

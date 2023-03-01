@@ -34,9 +34,9 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
 
         api_config =
           if api_url
-            MotorApiConfig.create_with(url: api_url).find_or_create_by!(name: api_url.sub(%r{\Ahttps?://}))
+            MotorAPIConfig.create_with(url: api_url).find_or_create_by!(name: api_url.sub(%r{\Ahttps?://}))
           else
-            MotorApiConfig.create_with(url: '/').find_or_create_by!(name: 'origin')
+            MotorAPIConfig.create_with(url: '/').find_or_create_by!(name: 'origin')
           end
 
         resource_display_name = (resource[:preferences][:display_name] || resource.name).titleize.singularize

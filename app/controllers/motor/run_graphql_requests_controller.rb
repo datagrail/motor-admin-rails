@@ -13,7 +13,7 @@ module Motor
     private
 
     def respond_with_result
-      response = Motor::ApiConfigs.run_grapql(find_or_initialize_api_config,
+      response = Motor::APIConfigs.run_grapql(find_or_initialize_api_config,
                                               query: request_params[:query],
                                               variables: request_params[:variables],
                                               headers: { 'Authorization' => "Bearer #{current_user_jwt}" })
@@ -23,8 +23,8 @@ module Motor
     end
 
     def find_or_initialize_api_config
-      Motor::ApiConfig.find_by(name: request_params[:api_config_name]) ||
-        Motor::ApiConfig.new(url: request_params[:api_config_name])
+      Motor::APIConfig.find_by(name: request_params[:api_config_name]) ||
+        Motor::APIConfig.new(url: request_params[:api_config_name])
     end
 
     def current_user_jwt

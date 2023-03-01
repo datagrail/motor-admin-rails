@@ -43,7 +43,7 @@ namespace :motor do
     Motor::Configs::WriteToFile.write_with_lock
 
     puts "✅ Motor Admin configurations have been synced with #{remote_url}"
-  rescue Motor::Configs::SyncWithRemote::ApiNotFound
+  rescue Motor::Configs::SyncWithRemote::APINotFound
     puts '⚠️  Synchronization failed: you need to specify `MOTOR_SYNC_API_KEY` ' \
          'env variable in your remote app in order to enable this feature'
   end

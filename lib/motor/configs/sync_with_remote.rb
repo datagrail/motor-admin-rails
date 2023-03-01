@@ -4,7 +4,7 @@ module Motor
   module Configs
     module SyncWithRemote
       UnableToSync = Class.new(StandardError)
-      ApiNotFound = Class.new(StandardError)
+      APINotFound = Class.new(StandardError)
 
       module_function
 
@@ -18,7 +18,7 @@ module Motor
       def sync_from_remote!(remote_url, api_key)
         response = Motor::NetHttpUtils.get(remote_url, {}, { 'X-Authorization' => api_key })
 
-        raise ApiNotFound if response.is_a?(Net::HTTPNotFound)
+        raise APINotFound if response.is_a?(Net::HTTPNotFound)
         raise UnableToSync, [response.message, response.body].join(': ') unless response.is_a?(Net::HTTPSuccess)
 
         configs_hash = JSON.parse(response.body)
@@ -39,7 +39,7 @@ module Motor
           configs_hash.to_json
         )
 
-        raise ApiNotFound if response.is_a?(Net::HTTPNotFound)
+        raise APINotFound if response.is_a?(Net::HTTPNotFound)
         raise UnableToSync, [response.message, response.body].join(': ') unless response.is_a?(Net::HTTPSuccess)
       end
     end

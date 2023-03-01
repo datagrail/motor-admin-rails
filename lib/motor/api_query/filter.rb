@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  module ApiQuery
+  module APIQuery
     module Filter
       LIKE_FILTER_VALUE_REGEXP = /\A%?(.*?)%?\z/.freeze
       DISTINCT_RESTRICTED_COLUMN_TYPES = %i[json point].freeze

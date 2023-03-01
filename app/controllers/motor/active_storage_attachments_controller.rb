@@ -13,7 +13,7 @@ module Motor
       @attachment.assign_attributes(record_type: '', record_id: 0) unless record
 
       if @attachment.save(validate: false)
-        render json: { data: Motor::ApiQuery::BuildJson.call(@attachment, params, current_ability) }
+        render json: { data: Motor::APIQuery::BuildJson.call(@attachment, params, current_ability) }
       else
         render json: { errors: @attachment.errors }, status: :unprocessable_entity
       end

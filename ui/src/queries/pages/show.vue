@@ -124,7 +124,7 @@
         />
       </div>
       <div
-        v-if="showApiUi"
+        v-if="showAPIUi"
         style="height: calc(100% - 64px)"
       >
         <div
@@ -157,7 +157,7 @@
           class="p-3 bg-white d-flex"
           :class="{ 'border-bottom': !data.length && !errors.length }"
         >
-          <ApiSelect
+          <APISelect
             v-model="dataQuery.preferences.api_config_name"
             class="w-50 pe-1"
           />
@@ -310,12 +310,12 @@ import { widthLessThan } from 'utils/scripts/dimensions'
 import { modelNameMap } from 'data_resources/scripts/schema'
 import { queriesStore } from 'reports/scripts/store'
 import RevisionsModal from 'utils/components/revisions_modal'
-import ApiSelect from 'api_configs/components/select'
+import APISelect from 'api_configs/components/select'
 import { databaseNames } from 'utils/scripts/configs'
 import DbLabel from '../components/db_label'
 
 import api from 'api'
-import { loadApiQuery } from '../scripts/api_query'
+import { loadAPIQuery } from '../scripts/api_query'
 
 const SPLIT_POSITION_KEY = 'motor:queries:vsplit'
 const RESERVED_VARIABLES = ['current_user', 'current_user_id', 'current_user_email']
@@ -340,7 +340,7 @@ export default {
     QueryResult,
     Settings,
     VariablesForm,
-    ApiSelect
+    APISelect
   },
   data () {
     return {
@@ -374,7 +374,7 @@ export default {
     isNewPage () {
       return this.$route.name === 'new_query' && !this.query.id
     },
-    showApiUi () {
+    showAPIUi () {
       return this.queryType === 'api' || (!this.isNewPage && this.dataQuery.preferences.api_path)
     },
     queryTypes () {
@@ -697,7 +697,7 @@ export default {
       this.maybeUpdateVariablesQueryParams()
 
       if (this.queryType === 'api') {
-        return this.runApiQuery()
+        return this.runAPIQuery()
       } else {
         if (this.dataQuery.sql_body && (this.isEdited || !this.query.id)) {
           return this.runQuery()
@@ -725,11 +725,11 @@ export default {
         })
       }
     },
-    runApiQuery () {
+    runAPIQuery () {
       if (!this.isLoading) {
         this.isLoading = true
 
-        return loadApiQuery(this.dataQuery, this.variablesData).then((result) => {
+        return loadAPIQuery(this.dataQuery, this.variablesData).then((result) => {
           this.errors = []
 
           this.data = result.data || []

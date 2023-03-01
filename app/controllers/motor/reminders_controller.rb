@@ -11,7 +11,7 @@ module Motor
 
       broadcast_note_update(@reminder.record)
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@reminder, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@reminder, params, current_ability) }
     end
 
     def destroy

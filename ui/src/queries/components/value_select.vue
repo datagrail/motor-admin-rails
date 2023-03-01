@@ -20,7 +20,7 @@
 <script>
 import { watch } from 'vue'
 import api from 'api'
-import { loadApiQuery } from 'queries/scripts/api_query'
+import { loadAPIQuery } from 'queries/scripts/api_query'
 
 const LOAD_ITEMS_LIMIT = 100
 
@@ -170,7 +170,7 @@ export default {
       this.optionsRespCache ||= {}
 
       if (this.query?.preferences?.query_type === 'api') {
-        this.optionsRespCache[cacheKey] ||= loadApiQuery(this.query, variables)
+        this.optionsRespCache[cacheKey] ||= loadAPIQuery(this.query, variables)
       } else {
         this.optionsRespCache[cacheKey] ||= api.get(`run_queries/${this.queryId}`, {
           params: {

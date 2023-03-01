@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  class RunApiRequestsController < APIBaseController
+  class RunAPIRequestsController < APIBaseController
     JWT_TTL = 2.hours
 
     wrap_parameters :data
@@ -17,7 +17,7 @@ module Motor
     private
 
     def respond_with_result
-      response = Motor::ApiConfigs.run(find_or_initialize_api_config,
+      response = Motor::APIConfigs.run(find_or_initialize_api_config,
                                        method: request_params[:method],
                                        path: request_params[:path],
                                        body: request_params[:body],
@@ -29,8 +29,8 @@ module Motor
     end
 
     def find_or_initialize_api_config
-      Motor::ApiConfig.find_by(name: request_params[:api_config_name]) ||
-        Motor::ApiConfig.new(url: request_params[:api_config_name])
+      Motor::APIConfig.find_by(name: request_params[:api_config_name]) ||
+        Motor::APIConfig.new(url: request_params[:api_config_name])
     end
 
     def current_user_jwt

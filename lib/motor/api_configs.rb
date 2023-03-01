@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  module ApiConfigs
+  module APIConfigs
     METHODS = %w[get post put delete].freeze
 
     DEFAULT_HEADERS = { 'Content-Type' => 'application/json' }.freeze

@@ -10,11 +10,11 @@ module Motor
     authorize_resource :query, only: :create
 
     def index
-      render json: { data: Motor::ApiQuery::BuildJson.call(@queries.active, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@queries.active, params, current_ability) }
     end
 
     def show
-      render json: { data: Motor::ApiQuery::BuildJson.call(@query, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@query, params, current_ability) }
     end
 
     def create
@@ -28,7 +28,7 @@ module Motor
 
         Motor::Configs::WriteToFile.call
 
-        render json: { data: Motor::ApiQuery::BuildJson.call(@query, params, current_ability) }
+        render json: { data: Motor::APIQuery::BuildJson.call(@query, params, current_ability) }
       end
     rescue ActiveRecord::RecordNotUnique
       retry
@@ -38,7 +38,7 @@ module Motor
       Motor::Queries::Persistance.update_from_params!(@query, query_params)
       Motor::Configs::WriteToFile.call
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@query, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@query, params, current_ability) }
     rescue Motor::Queries::Persistance::NameAlreadyExists
       render json: { errors: [{ source: 'name', detail: 'Name already exists' }] }, status: :unprocessable_entity
     end

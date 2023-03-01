@@ -284,7 +284,7 @@ export default {
         })).then((result) => {
           this.$Message.info(this.i18n.action_has_been_applied)
         }).catch((error) => {
-          this.onApiError(error)
+          this.onAPIError(error)
         }).finally(() => {
           this.$emit('finish-action', action.name)
         })
@@ -357,12 +357,12 @@ export default {
           }
         })
       }).catch((error) => {
-        this.onApiError(error)
+        this.onAPIError(error)
       }).finally(() => {
         this.$emit('finish-action', action.name)
       })
     },
-    onApiError (error) {
+    onAPIError (error) {
       error.response.data.text().then(text => {
         try {
           error.response.data = JSON.parse(text)
@@ -452,7 +452,7 @@ export default {
           })).then((result) => {
             this.$Message.info(this.i18n.action_has_been_applied)
           }).catch((error) => {
-            this.onApiError(error)
+            this.onAPIError(error)
           }).finally(() => {
             this.$emit('finish-action', action.name)
 

@@ -7,14 +7,14 @@ module Motor
     load_and_authorize_resource
 
     def index
-      render json: { data: Motor::ApiQuery::BuildJson.call(@resources, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@resources, params, current_ability) }
     end
 
     def create
       Motor::Resources::PersistConfigs.call(@resource)
       Motor::Configs::WriteToFile.call
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@resource, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@resource, params, current_ability) }
     end
 
     private

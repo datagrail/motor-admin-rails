@@ -63,14 +63,14 @@ module Motor
       def find_or_assign_api_config(form)
         return if form.api_config.present?
 
-        config = Motor::ApiConfig.find_by(url: [form.api_config_name, form.api_config_name.delete_suffix('/')])
+        config = Motor::APIConfig.find_by(url: [form.api_config_name, form.api_config_name.delete_suffix('/')])
 
         if config
           config.update!(deleted_at: nil)
 
           form.api_config_name = config.name
         else
-          form.api_config = Motor::ApiConfig.new(url: form.api_config_name.delete_suffix('/')).tap do |c|
+          form.api_config = Motor::APIConfig.new(url: form.api_config_name.delete_suffix('/')).tap do |c|
             c.name = c.url.sub(%r{\Ahttps?://}, '').delete_suffix('/')
           end
         end

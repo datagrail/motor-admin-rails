@@ -9,20 +9,20 @@ module Motor
     authorize_resource :note, only: :create
 
     def index
-      @notes = Motor::ApiQuery.call(@notes.active.order(created_at: :asc), params)
+      @notes = Motor::APIQuery.call(@notes.active.order(created_at: :asc), params)
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@notes, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@notes, params, current_ability) }
     end
 
     def show
-      render json: { data: Motor::ApiQuery::BuildJson.call(@note, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@note, params, current_ability) }
     end
 
     def create
       Motor::Notes::Persist.call(@note, current_user)
       Motor::NotifyNoteMentionsJob.perform_later(@note, current_user)
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@note, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@note, params, current_ability) }
     end
 
     def update
@@ -31,7 +31,7 @@ module Motor
       Motor::Notes::Persist.call(@note, current_user)
       Motor::NotifyNoteMentionsJob.perform_later(@note, current_user)
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@note, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@note, params, current_ability) }
     end
 
     def destroy

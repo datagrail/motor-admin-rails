@@ -21,13 +21,13 @@
       prop="api_config_name"
     >
       <div class="d-flex">
-        <ApiSelect
+        <APISelect
           v-model="dataForm.api_config_name"
         />
         <VButton
           icon="md-settings"
           class="ms-2"
-          @click="openApiSettings"
+          @click="openAPISettings"
         />
       </div>
     </FormItem>
@@ -152,15 +152,15 @@
 import api from 'api'
 import TagsSelect from 'tags/components/select'
 import { fieldRequiredMessage } from 'utils/scripts/i18n'
-import ApiSelect from 'api_configs/components/select'
-import ApiSettings from 'api_configs/components/list'
+import APISelect from 'api_configs/components/select'
+import APISettings from 'api_configs/components/list'
 import CodeEditor from 'utils/components/code_editor'
 
 export default {
   name: 'SaveCustomForm',
   components: {
     TagsSelect,
-    ApiSelect,
+    APISelect,
     CodeEditor
   },
   props: {
@@ -228,10 +228,10 @@ export default {
     changeFormType (value) {
       this.dataForm.preferences.request_type = value
     },
-    openApiSettings () {
+    openAPISettings () {
       this.$Modal.remove()
 
-      this.$Drawer.open(ApiSettings, {}, {
+      this.$Drawer.open(APISettings, {}, {
         title: 'API Settings',
         closable: true
       })

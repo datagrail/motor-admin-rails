@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 module Motor
-  module ApiQuery
+  module APIQuery
     module_function
 
     def call(rel, params)
-      rel = ApiQuery::Sort.call(rel, params[:sort] || params[:order])
-      rel = ApiQuery::Paginate.call(rel, params[:page])
-      rel = ApiQuery::Filter.call(rel, params[:filter] || params[:filters])
-      rel = ApiQuery::ApplyScope.call(rel, params[:scope])
+      rel = APIQuery::Sort.call(rel, params[:sort] || params[:order])
+      rel = APIQuery::Paginate.call(rel, params[:page])
+      rel = APIQuery::Filter.call(rel, params[:filter] || params[:filters])
+      rel = APIQuery::ApplyScope.call(rel, params[:scope])
 
-      ApiQuery::Search.call(rel, params[:q] || params[:search] || params[:query])
+      APIQuery::Search.call(rel, params[:q] || params[:search] || params[:query])
     end
   end
 end

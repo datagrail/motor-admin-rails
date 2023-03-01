@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  module ApiQuery
+  module APIQuery
     module Search
       STRING_COLUMN_TYPES = %i[text string citext].freeze
       NUMBER_COLUMN_TYPES = %i[integer float].freeze

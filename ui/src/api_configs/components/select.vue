@@ -16,7 +16,7 @@
 import api from 'api'
 
 export default {
-  name: 'ApiConfigSelect',
+  name: 'APIConfigSelect',
   props: {
     modelValue: {
       type: [String, Number],

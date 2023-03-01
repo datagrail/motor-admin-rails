@@ -66,13 +66,13 @@ module Motor
         api_config_name = query.preferences[:api_config_name]
 
         return if api_config_name.blank?
-        return if Motor::ApiConfig.find_by(name: api_config_name)
+        return if Motor::APIConfig.find_by(name: api_config_name)
 
-        config = Motor::ApiConfig.find_by(url: [api_config_name, api_config_name.delete_suffix('/')])
+        config = Motor::APIConfig.find_by(url: [api_config_name, api_config_name.delete_suffix('/')])
 
         config&.update!(deleted_at: nil)
 
-        config ||= Motor::ApiConfig.create!(name: api_config_name.sub(%r{\Ahttps?://}, '').delete_suffix('/'),
+        config ||= Motor::APIConfig.create!(name: api_config_name.sub(%r{\Ahttps?://}, '').delete_suffix('/'),
                                             url: api_config_name.delete_suffix('/'))
 
         query.preferences[:api_config_name] = config.name

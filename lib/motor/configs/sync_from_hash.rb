@@ -77,7 +77,7 @@ module Motor
         configs_index = Motor::Configs::LoadFromCache.load_api_configs.index_by(&:name)
 
         configs_hash[:api_configs].each do |attrs|
-          record = configs_index[attrs[:name]] || Motor::ApiConfig.new
+          record = configs_index[attrs[:name]] || Motor::APIConfig.new
 
           next if record.updated_at && attrs[:updated_at] <= record.updated_at
 
@@ -86,7 +86,7 @@ module Motor
 
         archive_api_configs(configs_index, configs_hash[:api_configs])
 
-        ActiveRecordUtils.reset_id_sequence!(Motor::ApiConfig)
+        ActiveRecordUtils.reset_id_sequence!(Motor::APIConfig)
       end
 
       def archive_api_configs(configs_index, api_configs)

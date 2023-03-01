@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  module ApiQuery
+  module APIQuery
     module ApplyScope
       module_function
 
@@ -27,7 +27,7 @@ module Motor
         return rel unless scope_configs
         return rel unless scope_configs[:preferences]
 
-        rel = ApiQuery::Filter.call(rel, scope_configs[:preferences][:filter])
+        rel = APIQuery::Filter.call(rel, scope_configs[:preferences][:filter])
 
         apply_order(rel, scope_configs[:preferences][:sort])
       end

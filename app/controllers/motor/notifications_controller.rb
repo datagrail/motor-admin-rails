@@ -8,11 +8,11 @@ module Motor
 
     def index
       @notifications =
-        Motor::ApiQuery.call(@notifications.where(recipient: current_user).order(created_at: :desc), params)
+        Motor::APIQuery.call(@notifications.where(recipient: current_user).order(created_at: :desc), params)
 
       render json: {
-        data: Motor::ApiQuery::BuildJson.call(@notifications, params, current_ability),
-        meta: Motor::ApiQuery::BuildMeta.call(@notifications, params)
+        data: Motor::APIQuery::BuildJson.call(@notifications, params, current_ability),
+        meta: Motor::APIQuery::BuildMeta.call(@notifications, params)
       }
     end
 
@@ -21,7 +21,7 @@ module Motor
 
       Motor::NotificationsChannel.broadcast_to(current_user, ['update', @notification.as_json(include: %i[record])])
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@notification, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@notification, params, current_ability) }
     end
 
     private

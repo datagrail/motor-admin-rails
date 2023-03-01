@@ -3,7 +3,7 @@ import api from 'api'
 import { interpolateForQueryParams, titleize } from 'utils/scripts/string'
 import { loadCredentials } from 'utils/scripts/auth_credentials'
 
-function loadApiQuery (query, variables) {
+function loadAPIQuery (query, variables) {
   const [apiPath, queryParams] = interpolateForQueryParams(query.preferences.api_path, variables)
 
   for (const key in queryParams) {
@@ -37,7 +37,7 @@ function loadApiQuery (query, variables) {
 
   return request.then((result) => {
     if (typeof result.data === 'object') {
-      const data = fetchRowsFromsApi(result.data?.data || result.data)
+      const data = fetchRowsFromsAPI(result.data?.data || result.data)
       const columns = buildColumnsForData(
         result.data?.data || result.data,
         result.data.meta?.columns || result.data.data?.columns || result.data?.columns
@@ -114,7 +114,7 @@ function fetchDataArray (data) {
   }
 }
 
-function fetchRowsFromsApi (data) {
+function fetchRowsFromsAPI (data) {
   const foundData = fetchDataArray(data)
 
   if (foundData) {
@@ -128,4 +128,4 @@ function fetchRowsFromsApi (data) {
   }
 }
 
-export { loadApiQuery }
+export { loadAPIQuery }

@@ -51,10 +51,10 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
             form.preferences[:default_values_api_path].delete_prefix(url).sub(/\A\/?/, '/')
         end
 
-        form.update!(api_config_name: MotorApiConfig.find_or_create_by!(name: url, url: url).name,
+        form.update!(api_config_name: MotorAPIConfig.find_or_create_by!(name: url, url: url).name,
                      api_path: form.api_path.delete_prefix(url).sub(/\A\/?/, '/'))
       else
-        form.update!(api_config_name: MotorApiConfig.find_or_create_by!(name: 'origin', url: '/').name)
+        form.update!(api_config_name: MotorAPIConfig.find_or_create_by!(name: 'origin', url: '/').name)
       end
     end
 
@@ -66,9 +66,9 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
 
         query.preferences['api_path'].delete(url)
 
-        query.preferences['api_config_name'] = MotorApiConfig.find_or_create_by!(name: url, url: url).name
+        query.preferences['api_config_name'] = MotorAPIConfig.find_or_create_by!(name: url, url: url).name
       else
-        query.preferences['api_config_name'] = MotorApiConfig.find_or_create_by!(name: 'origin', url: '/').name
+        query.preferences['api_config_name'] = MotorAPIConfig.find_or_create_by!(name: 'origin', url: '/').name
       end
 
       query.save!
@@ -76,7 +76,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
 
     change_column_null :motor_forms, :api_config_name, false
 
-    MotorApiConfig.find_or_create_by!(name: 'origin', url: '/')
+    MotorAPIConfig.find_or_create_by!(name: 'origin', url: '/')
   end
 
   def down

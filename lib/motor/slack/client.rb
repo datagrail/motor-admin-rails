@@ -9,7 +9,7 @@ module Motor
       LOAD_USERS_ENPOINT = "#{BASE_API_URL}/users.list"
       SEND_FILE_ENPOINT = "#{BASE_API_URL}/files.upload"
 
-      ApiError = Class.new(StandardError)
+      APIError = Class.new(StandardError)
 
       module_function
 
@@ -43,7 +43,7 @@ module Motor
       def parse_json_response_or_throw_error(resp)
         data = JSON.parse(resp.body)
 
-        raise ApiError, resp.body unless data['ok']
+        raise APIError, resp.body unless data['ok']
 
         data
       end

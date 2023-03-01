@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Motor
-  module ApiQuery
+  module APIQuery
     module BuildJson
       module_function
 

@@ -15,7 +15,7 @@ module Motor
       Motor::Query.destroy_all
       Motor::Dashboard.destroy_all
       Motor::Form.destroy_all
-      Motor::ApiConfig.destroy_all
+      Motor::APIConfig.destroy_all
       Motor::Config.destroy_all
     end
 

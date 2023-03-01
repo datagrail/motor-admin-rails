@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 module Motor
-  class ApiConfigsController < APIBaseController
+  class APIConfigsController < APIBaseController
     wrap_parameters :data, except: %i[include fields]
 
     before_action :find_or_initialize_api_config, only: :create
     load_and_authorize_resource
 
     def index
-      render json: { data: Motor::ApiQuery::BuildJson.call(@api_configs.active.order(:id), params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@api_configs.active.order(:id), params, current_ability) }
     end
 
     def create
@@ -16,7 +16,7 @@ module Motor
 
       Motor::Configs::WriteToFile.call
 
-      render json: { data: Motor::ApiQuery::BuildJson.call(@api_config, params, current_ability) }
+      render json: { data: Motor::APIQuery::BuildJson.call(@api_config, params, current_ability) }
     rescue ActiveRecord::RecordNotUnique
       find_or_initialize_api_config
 
@@ -38,7 +38,7 @@ module Motor
         api_config_params.values_at(:name, :url, :description, :preferences, :credentials)
 
       @api_config =
-        Motor::ApiConfig.find_or_initialize_by(name: name).tap do |config|
+        Motor::APIConfig.find_or_initialize_by(name: name).tap do |config|
           config.url = url.delete_suffix('/')
           config.description = description
           config.preferences.merge!(preferences)

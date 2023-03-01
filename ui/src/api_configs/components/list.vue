@@ -3,7 +3,7 @@
     v-if="!configs.length"
     class="mb-3"
   >
-    <ApiForm
+    <APIForm
       :submit-text="'Update'"
       :with-name="true"
       @submit="handleUpdate"
@@ -53,7 +53,7 @@
         {{ i18n.expand }}
       </VButton>
     </VForm>
-    <ApiForm
+    <APIForm
       v-else-if="config.name !== 'origin'"
       :config="config"
       :submit-text="'Update'"
@@ -64,7 +64,7 @@
     long
     type="dashed"
     class="mb-3"
-    @click="openAddApiModal"
+    @click="openAddAPIModal"
   >
     <Icon type="md-add" />
     {{ i18n.add_api }}
@@ -78,12 +78,12 @@
 <script>
 import api from 'api'
 
-import ApiForm from '../components/form'
+import APIForm from '../components/form'
 
 export default {
-  name: 'ApiSettingsPage',
+  name: 'APISettingsPage',
   components: {
-    ApiForm
+    APIForm
   },
   data () {
     return {
@@ -105,8 +105,8 @@ export default {
         console.error(error)
       })
     },
-    openAddApiModal () {
-      this.$Modal.open(ApiForm, {
+    openAddAPIModal () {
+      this.$Modal.open(APIForm, {
         withName: true,
         onSubmit: (data) => {
           this.handleUpdate(data).then(() => {

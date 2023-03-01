@@ -5,11 +5,11 @@ module Motor
     load_and_authorize_resource :audit
 
     def index
-      audits = Motor::ApiQuery.call(@audits, params)
+      audits = Motor::APIQuery.call(@audits, params)
 
       render json: {
-        data: Motor::ApiQuery::BuildJson.call(audits, params, current_ability),
-        meta: Motor::ApiQuery::BuildMeta.call(audits, params)
+        data: Motor::APIQuery::BuildJson.call(audits, params, current_ability),
+        meta: Motor::APIQuery::BuildMeta.call(audits, params)
       }
     end
   end

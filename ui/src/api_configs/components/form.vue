@@ -67,7 +67,7 @@
 import KeyValueInput from 'data_forms/components/key_value_input'
 
 export default {
-  name: 'ApiForm',
+  name: 'APIForm',
   components: {
     KeyValueInput
   },

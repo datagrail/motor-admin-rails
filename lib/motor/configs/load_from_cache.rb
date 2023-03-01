@@ -70,7 +70,7 @@ module Motor
 
       def load_api_configs(cache_key: nil)
         maybe_fetch_from_cache('forms', cache_key) do
-          Motor::ApiConfig.all.active.load
+          Motor::APIConfig.all.active.load
         end
       end
 
@@ -102,7 +102,7 @@ module Motor
           Motor::Alert.select("'alerts', MAX(updated_at)").to_sql,
           Motor::Query.select("'queries', MAX(updated_at)").to_sql,
           Motor::Form.select("'forms', MAX(updated_at)").to_sql,
-          Motor::ApiConfig.select("'api_configs', MAX(updated_at)").to_sql
+          Motor::APIConfig.select("'api_configs', MAX(updated_at)").to_sql
         ].join(' UNION ')
       end
     end
