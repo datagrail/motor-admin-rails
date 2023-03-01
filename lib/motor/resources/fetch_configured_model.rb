@@ -12,6 +12,7 @@ module Motor
       def call(model, cache_key:)
         configs = Motor::Configs::LoadFromCache.load_resources(cache_key: cache_key)
 
+        return model if model < ActiveYaml::Base
         return model if model.name == 'ActiveStorage::Attachment'
         return model if configs.blank? || sti_model?(model)
 
